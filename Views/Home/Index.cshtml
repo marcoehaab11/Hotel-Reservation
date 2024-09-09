@@ -1,0 +1,94 @@
+﻿@using Hotel_Reservation.ViewModel
+@model CreateReservationFromViewModel
+@{
+    
+    ViewData["Title"] = "Reservation";
+}
+
+<form asp-controller="Home" asp-action="Index">
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+    <div class="card px-1 py-4">
+        <div class="card-body">
+            <h6 class="card-title mb-3">Room Type :</h6>
+            <div class="form-group">
+                <select class="form-select" asp-for="RoomTypeId" asp-items="Model.RoomTypies"
+                        data-placeholder="Select a Room Type" data-minimum-results-for-search="Infinity">
+              
+                </select>
+                <span asp-validation-for="RoomTypies" class="text-danger"></span>
+            </div>
+            
+            <h6 class="card-title py-3">Meal Plan :</h6>
+            <div class="form-group">
+                <select class="form-select" asp-for="MealPlanId" asp-items="Model.MealPlans"
+                        data-placeholder="Select a Meal Plan" data-minimum-results-for-search="Infinity">
+                </select>
+                <span asp-validation-for="MealPlanId" class="text-danger"></span>
+
+            </div>
+       
+            <div class="row ">
+                <div class="col-sm-12">
+                        <h6 class="card-title pt-3">Number Of Adult :</h6>
+
+                    <div class="form-group">
+                            <input asp-for="NumberOfAdult" class="form-control" type="number" min="0" placeholder="Number of Adults">
+                        <span asp-validation-for="NumberOfAdult" class="text-danger"></span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                        <h6 class="card-title pt-3">Number Of Children :</h6>
+
+                    <div class="form-group">
+
+                        <div class="input-group">
+                                <input asp-for="NumberOfChildren" class="form-control" type="number" min="0" placeholder="Number of Children">
+                            </div>
+                        <span asp-validation-for="NumberOfChildren" class="text-danger"></span>
+
+                    </div>
+                </div>
+            </div>
+                <div class="row mt-3">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                            <lable class="date-label">Check-In :</lable>
+                        <div class="input-group">
+                                <input asp-for="CheckInDate" id="checkInDate"  class="form-control" type="date" min="2024-01-01" max="2024-12-31" value="2024-01-01" placeholder=" Check-in" onchange="compareDates()">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                            <lable class="date-label">Check-out :</lable>
+                            <div class="input-group">
+                                <input asp-for="CheckOutDate" id="checkOutDate" class="form-control" type="date" min="2024-01-01" value="2024-01-02" max="2024-12-31" placeholder="Checkout" onchange="compareDates()">.
+
+                        </div>
+                    </div>
+                </div>
+                    <div id="message"></div>
+                    <span asp-validation-for="CheckInDate" class="text-danger"></span>
+                    <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+            </div>
+            <div class=" d-flex flex-column text-center px-5 mt-3 mb-3">
+                    
+                    <button  type="submit" id="submitbutton"  class=" btn btn-primary btn-block confirm-button">Confirm</button>
+
+            </div>
+                <div id="result"></div>
+        </div>
+    </div>
+</div>
+</form>
+
+@section Scripts
+{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/createreservation.js"></script>
+
+}
