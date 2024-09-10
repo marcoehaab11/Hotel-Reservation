@@ -8,7 +8,7 @@ namespace Hotel_Reservation.Services
         IEnumerable<RoomSeason> GetAll();
         IEnumerable<RoomSeason> GetRoomById(int id);
         IEnumerable<SelectListItem> GetSelectList();
-        decimal GetPriceForRooms(int roomTypeId, DateTime checkInDate, DateTime checkOutDate);
         string GetRoomNameById(int roomId);
+        decimal RoomPriceForReservation(DateTime checkInDate, DateTime checkOutDate, int roomTypeId, int numberOfGuests);
     }
 }

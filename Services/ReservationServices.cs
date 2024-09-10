@@ -20,29 +20,14 @@ namespace Hotel_Reservation.Services
         public decimal GetReservationTotal(DateTime checkInDate, DateTime checkOutDate, int numberOfAdult, int numberOfChildren, int roomType, int mealPlan)
         {
             decimal total = 0;
-            total += RoomPriceForReservation(checkInDate,  checkOutDate,  roomType, numberOfAdult);
-            total += MealPriceForReservation(checkInDate, checkOutDate, mealPlan, numberOfAdult, numberOfChildren); 
+            total += _roomsServices.RoomPriceForReservation(checkInDate,  checkOutDate,  roomType, numberOfAdult);
+            total += _mealServices.MealPriceForReservation(checkInDate, checkOutDate, mealPlan, numberOfAdult, numberOfChildren); 
 
             return total;
         }
 
-        public decimal RoomPriceForReservation(DateTime checkInDate, DateTime checkOutDate, int roomType, int numberOfGuests)
-        {
-            return numberOfGuests * RoomPriceForOnePerson(checkInDate, checkOutDate, roomType);
-        }
-        public decimal MealPriceForReservation(DateTime checkInDate, DateTime checkOutDate, int mealPlan, int numberOfAdult, int numberOfChildren)
-        {
-            return (numberOfAdult+ numberOfChildren) * MealPriceForOnePerson(checkInDate, checkOutDate, mealPlan);
-        }
-
-        public decimal RoomPriceForOnePerson(DateTime checkInDate, DateTime checkOutDate, int roomType)
-        {
-            return _roomsServices.GetPriceForRooms(roomType, checkInDate, checkOutDate);
-        }
-        public decimal MealPriceForOnePerson(DateTime checkInDate, DateTime checkOutDate, int mealPlan)
-        {
-            return _mealServices.GetPriceForMeals(mealPlan, checkInDate, checkOutDate);
-        }
+        
+       
 
 
 

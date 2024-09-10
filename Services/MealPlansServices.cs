@@ -37,7 +37,7 @@ namespace Hotel_Reservation.Services
                 .AsNoTracking().FirstOrDefault();
         }
 
-        public decimal GetPriceForMeals(int mealId, DateTime checkInDate, DateTime checkOutDate)
+        private decimal MealPriceForPerson(int mealId, DateTime checkInDate, DateTime checkOutDate)
         {
             decimal price = 0;
             IEnumerable<MealPlanPerSeason> MealPlan = GetMealById(mealId);
@@ -60,6 +60,12 @@ namespace Hotel_Reservation.Services
         {
             return dateTime.AddDays(1);
         }
+        public decimal MealPriceForReservation(DateTime checkInDate, DateTime checkOutDate, int mealPlanId, int numberOfAdult, int numberOfChildren)
+        {
+            return (numberOfAdult + numberOfChildren) * MealPriceForPerson(mealPlanId,checkInDate, checkOutDate);
+        }
 
+
+        
     }
 }

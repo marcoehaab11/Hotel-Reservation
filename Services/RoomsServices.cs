@@ -39,7 +39,7 @@ namespace Hotel_Reservation.Services
                 .Select(e => e.RoomTypeName)
                 .AsNoTracking().FirstOrDefault();
         }
-        public decimal GetPriceForRooms(int roomTypeId, DateTime checkInDate, DateTime checkOutDate)
+        private decimal GetRoomPriceForOnePerson(int roomTypeId, DateTime checkInDate, DateTime checkOutDate)
         {
             decimal price = 0;
             IEnumerable<RoomSeason> MealPlan = GetRoomById(roomTypeId);
@@ -56,10 +56,16 @@ namespace Hotel_Reservation.Services
 
             return price;
         }
-
-        public DateTime AddOneDay(DateTime dateTime)
+        public decimal RoomPriceForReservation(DateTime checkInDate, DateTime checkOutDate, int roomTypeId, int numberOfGuests)
+        {
+            return numberOfGuests * GetRoomPriceForOnePerson(roomTypeId, checkInDate, checkOutDate);
+        }
+     
+        private DateTime AddOneDay(DateTime dateTime)
         {
             return dateTime.AddDays(1);
         }
+
+        
     }
 }
