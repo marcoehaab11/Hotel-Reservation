@@ -29,6 +29,13 @@ namespace Hotel_Reservation.Services
                     .Where(x => x.MealPlanID == mealId).AsNoTracking().ToList();
         }
 
+        public string GetMealPlanNameById(int meadId)
+        {
+            return _context.MealPlans
+                .Where(e => e.MealPlanId == meadId)
+                .Select(e=>e.MealPlanName)
+                .AsNoTracking().FirstOrDefault();
+        }
 
         public decimal GetPriceForMeals(int mealId, DateTime checkInDate, DateTime checkOutDate)
         {
@@ -47,6 +54,7 @@ namespace Hotel_Reservation.Services
 
             return price;
         }
+
 
         public DateTime AddOneDay(DateTime dateTime)
         {

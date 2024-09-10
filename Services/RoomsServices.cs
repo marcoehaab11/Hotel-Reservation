@@ -32,7 +32,13 @@ namespace Hotel_Reservation.Services
         {
             return GetAll().Where(e => e.RoomTypeId == id);
         }
-
+        public string GetRoomNameById(int roomId)
+        {
+            return _context.Rooms
+                .Where(e => e.RoomId == roomId)
+                .Select(e => e.RoomType)
+                .AsNoTracking().FirstOrDefault();
+        }
         public decimal GetPriceForRooms(int roomTypeId, DateTime checkInDate, DateTime checkOutDate)
         {
             decimal price = 0;

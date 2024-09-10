@@ -1,0 +1,85 @@
+﻿@using Hotel_Reservation.ViewModel
+@model InvoiceInformationViewModel
+@{
+
+    ViewData["Title"] = "Reservation";
+    
+}
+<style>
+    body, html {
+        height: 100%;
+    }
+
+    .container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 400px;
+        text-align: left; /* Align text to the left */
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+    <div class="card px-1 py-4">
+        <div class="card-body">
+           
+            
+            <div class="container">
+                
+                    <div class="card-body">
+                    <h4 class="card-title mb-4 text-center">Reservation Information</h4>
+
+                        <!-- Room Type -->
+                        <div class="mb-3 info-row">
+                            <h5 class="card-subtitle">Room Type:</h5>
+                        <p class="card-text">@Model.RoomType</p>
+                        </div>
+
+                        
+                        <div class="mb-3 info-row">
+                            <h5 class="card-subtitle">Meal Type:</h5>
+                            <p class="card-text">@Model.MealPlanType</p>
+                        </div>
+
+                        <div class="mb-3 info-row">
+                            <h5 class="card-subtitle">Number of Person:</h5>
+                        <p class="card-text">@Model.NumberOfAdult</p>
+                        </div>
+
+                        <div class="mb-3 info-row">
+                            <h5 class="card-subtitle">Number of Children:</h5>
+                        <p class="card-text">@Model.NumberOfChildren</p>
+                        </div>
+
+                        <div class="mb-3 info-row">
+                        <h5 class="card-subtitle">Check In Date:</h5>
+                        <p class="card-text">@Model.CheckInDate</p>
+                        </div> 
+                        <div class="mb-3 info-row">
+                        <h5 class="card-subtitle">Check Out Date:</h5>
+                        <p class="card-text">@Model.CheckOutDate</p>
+                        </div>
+               
+                        <div class="mb-3 info-row">
+                            <h5 class="card-subtitle">Total Cost:</h5>
+                        <p class="card-text">$@Model.Total</p>
+                        </div>
+
+                    </div>
+               
+            </div>
+
+        </div>
+    </div>
+</div>

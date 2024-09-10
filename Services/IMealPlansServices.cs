@@ -10,6 +10,7 @@ namespace Hotel_Reservation.Services
 
         decimal GetPriceForMeals(int mealId, DateTime checkInDate, DateTime checkOutDate);
         IEnumerable<SelectListItem> GetSelectList();
+        string GetMealPlanNameById(int meadId);
     }
 
 }

@@ -19,7 +19,10 @@ namespace Hotel_Reservation.Controllers
             _roomsServices = roomsServices;
             _reservationServices = reservationServices;
         }
-
+        public IActionResult Invoice()
+        {
+            return View();
+        }
         public IActionResult Index()
         {
             CreateReservationFromViewModel viewModel = new CreateReservationFromViewModel()
@@ -43,7 +46,18 @@ namespace Hotel_Reservation.Controllers
                 createReservation.NumberOfAdult, createReservation.NumberOfChildren, createReservation.RoomTypeId, createReservation.MealPlanId);
 
 
-            return Json(Total.ToString());
+            var result = new InvoiceInformationViewModel
+            {
+                NumberOfChildren= createReservation.NumberOfChildren,
+                NumberOfAdult = createReservation.NumberOfAdult,
+                RoomType = _roomsServices.GetRoomNameById(createReservation.RoomTypeId),
+                MealPlanType = _mealServices.GetMealPlanNameById(createReservation.MealPlanId),
+                CheckInDate = createReservation.CheckInDate.ToString("yyyy-MM-dd"),
+                CheckOutDate = createReservation.CheckOutDate.ToString("yyyy-MM-dd"),
+                Total = Total
+                
+            };
+            return View( "invoice", result);
         }
     }
 }
