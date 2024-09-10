@@ -24,7 +24,7 @@ namespace Hotel_Reservation.Services
         public IEnumerable<SelectListItem> GetSelectList()
         {
             return _context.Rooms
-                .Select(m => new SelectListItem { Value = m.RoomId.ToString(), Text = m.RoomType })
+                .Select(m => new SelectListItem { Value = m.RoomTypeId.ToString(), Text = m.RoomTypeName })
                 .AsNoTracking().ToList();
 
         }
@@ -35,8 +35,8 @@ namespace Hotel_Reservation.Services
         public string GetRoomNameById(int roomId)
         {
             return _context.Rooms
-                .Where(e => e.RoomId == roomId)
-                .Select(e => e.RoomType)
+                .Where(e => e.RoomTypeId == roomId)
+                .Select(e => e.RoomTypeName)
                 .AsNoTracking().FirstOrDefault();
         }
         public decimal GetPriceForRooms(int roomTypeId, DateTime checkInDate, DateTime checkOutDate)

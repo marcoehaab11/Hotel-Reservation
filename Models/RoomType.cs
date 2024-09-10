@@ -1,9 +1,10 @@
 ﻿namespace Hotel_Reservation.Models
 {
-    public class Room
+    public class RoomType
     {
-        public int RoomId { get; set; } 
-        public string RoomType { get; set; }
+        
+        public int RoomTypeId { get; set; } 
+        public string RoomTypeName { get; set; }
        
 
         public ICollection<Reservation> Reservations { get; set; }

@@ -18,7 +18,7 @@ namespace Hotel_Reservation.Models
         [ForeignKey("MealPlan")]
         public int MealPlanID { get; set; }
 
-        public Room Room { get; set; }
+        public RoomType Room { get; set; }
         public MealPlan MealPlan { get; set; } 
    
 

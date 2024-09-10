@@ -44,7 +44,7 @@ namespace Hotel_Reservation.Data
        public DbSet<Reservation> Reservations { get; set; }
 
 
-       public DbSet<Room> Rooms { get; set; }
+       public DbSet<RoomType> Rooms { get; set; }
        public DbSet<RoomSeason> RoomSeasons { get; set; }
        public DbSet<RoomSeasonStartAndEnd> RoomSeasonStartAndEnds { get; set; }
 
